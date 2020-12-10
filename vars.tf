@@ -22,3 +22,14 @@ variable "target_group_port" {}
 variable "target_group_protocol" {}
 variable "alb_name" {}
 variable "internal" {}
+variable "launch_config_name" {}
+variable "instance_type" {}
+variable "key" {}
+variable "autoscaling_group_name" {}
+variable "max_size" {}
+variable "min_size" {}
+variable "grace_period" {}
+variable "check_type" {}
+variable "force_delete" {}
+variable "tag_key" {}
+variable "tag_value" {}

@@ -1,5 +1,5 @@
 resource "aws_lb" "alb" {
-  name    = var.alb_name
+  name               = var.alb_name
   internal           = var.internal
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
@@ -41,7 +41,7 @@ resource "aws_security_group" "alb_sg" {
 
 
   tags = {
-    Name = "wipro_alb-sg"
+    Name    = "wipro-alb-sg"
     Project = var.project
   }
 }
@@ -49,10 +49,10 @@ resource "aws_security_group" "alb_sg" {
 resource "aws_alb_listener" "frontend" {
   default_action {
     target_group_arn = aws_lb_target_group.alb_tg.arn
-    type = "forward"
+    type             = "forward"
   }
   load_balancer_arn = aws_lb.alb.arn
-  port = 80
+  port              = 80
 }
 # ##################################################################################
 # # Locals.

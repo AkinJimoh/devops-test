@@ -37,3 +37,24 @@ module "alb" {
   project               = var.project
   alb_subnets           = module.vpc.public_subnet_ids
 }
+####################################
+# AutoScaling Resource
+####################################
+module "auto-scaling" {
+  source                 = "./modules/auto-scaling"
+  launch_config_name     = var.launch_config_name
+  instance_type          = var.instance_type
+  key                    = var.key
+  autoscaling_group_name = var.autoscaling_group_name
+  max_size               = var.max_size
+  min_size               = var.min_size
+  project                = var.project
+  vpc_id                 = module.vpc.vpc_id
+  grace_period           = var.grace_period
+  check_type             = var.check_type
+  force_delete           = var.force_delete
+  vpc_zone_identifier    = module.vpc.public_subnet_ids
+  tag_key                = var.tag_key
+  tag_value              = var.tag_value
+  target-group-arns      = module.alb.target_group_arn
+}

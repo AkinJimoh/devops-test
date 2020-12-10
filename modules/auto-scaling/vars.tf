@@ -1,0 +1,15 @@
+variable "launch_config_name" {}
+variable "instance_type" {}
+variable "key" {}
+variable "autoscaling_group_name" {}
+variable "max_size" {}
+variable "min_size" {}
+variable "project" {}
+variable "vpc_id" {}
+variable "grace_period" {}
+variable "check_type" {}
+variable "force_delete" {}
+variable "vpc_zone_identifier" {}
+variable "tag_key" {}
+variable "tag_value" {}
+variable "target-group-arns" {}
