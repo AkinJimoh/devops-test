@@ -1,10 +1,11 @@
 resource "aws_lb" "alb" {
+  name    = var.alb_name
   internal           = var.internal
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = var.alb_subnets
 
-  enable_deletion_protection = "true"
+  enable_deletion_protection = "false"
 
 
   tags = {
@@ -45,6 +46,14 @@ resource "aws_security_group" "alb_sg" {
   }
 }
 
+resource "aws_alb_listener" "frontend" {
+  default_action {
+    target_group_arn = aws_lb_target_group.alb_tg.arn
+    type = "forward"
+  }
+  load_balancer_arn = aws_lb.alb.arn
+  port = 80
+}
 # ##################################################################################
 # # Locals.
 # ##################################################################################

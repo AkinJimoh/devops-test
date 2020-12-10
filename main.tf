@@ -36,5 +36,4 @@ module "alb" {
   internal              = var.internal
   project               = var.project
   alb_subnets           = module.vpc.public_subnet_ids
-  #target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:898668804275:targetgroup/cloudgeeks-tg/bbc376dff9e0dd2f"
 }
