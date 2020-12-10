@@ -58,11 +58,11 @@ resource "aws_security_group" "tg_sg" {
     for_each = local.ingress_rules1
 
     content {
-      description = ingress.value.description
-      from_port   = ingress.value.port
-      to_port     = ingress.value.port
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      description     = ingress.value.description
+      from_port       = ingress.value.port
+      to_port         = ingress.value.port
+      protocol        = "tcp"
+      security_groups = [var.lb_sec_group]
     }
   }
 

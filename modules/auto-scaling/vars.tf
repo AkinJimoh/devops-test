@@ -13,3 +13,4 @@ variable "vpc_zone_identifier" {}
 variable "tag_key" {}
 variable "tag_value" {}
 variable "target-group-arns" {}
+variable "lb_sec_group" {}

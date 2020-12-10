@@ -57,4 +57,5 @@ module "auto-scaling" {
   tag_key                = var.tag_key
   tag_value              = var.tag_value
   target-group-arns      = module.alb.target_group_arn
+  lb_sec_group           = module.alb.alb_sg
 }
