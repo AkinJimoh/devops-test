@@ -20,3 +20,5 @@ variable "rt_instance_count" {}
 variable "alb_tg_name" {}
 variable "target_group_port" {}
 variable "target_group_protocol" {}
+variable "alb_name" {}
+variable "internal" {}

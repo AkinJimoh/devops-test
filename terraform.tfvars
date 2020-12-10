@@ -9,6 +9,8 @@ rt_instance_count     = 1
 alb_tg_name           = "wipro-tg"
 target_group_port     = 80
 target_group_protocol = "HTTP"
+alb_name              = "wipro-alb"
+internal              = false
 
 
 net_config = {

@@ -7,3 +7,11 @@ output "public_subnet_ids" {
   description = "Public Subnet IDS"
   value       = module.vpc.public_subnet_ids
 }
+
+output "target_group_arn" {
+  value = module.alb.target_group_arn
+}
+
+output "alb_sg" {
+  value = module.alb.alb_sg
+}

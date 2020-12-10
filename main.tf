@@ -26,9 +26,15 @@ module "vpc" {
 ####################################
 
 module "alb" {
-  source      = "./modules/application-load-balancer"
-  region      = var.region.euw2
-  alb_tg_name = var.alb_tg_name
-  target_group_port = var.target_group_port
+  source                = "./modules/application-load-balancer"
+  region                = var.region.euw2
+  alb_tg_name           = var.alb_tg_name
+  target_group_port     = var.target_group_port
   target_group_protocol = var.target_group_protocol
+  vpc_id                = module.vpc.vpc_id
+  alb_name              = var.alb_name
+  internal              = var.internal
+  project               = var.project
+  alb_subnets           = module.vpc.public_subnet_ids
+  #target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:898668804275:targetgroup/cloudgeeks-tg/bbc376dff9e0dd2f"
 }
