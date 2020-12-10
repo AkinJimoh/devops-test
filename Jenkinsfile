@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools {
+        tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform"
     }
 
@@ -8,37 +8,35 @@ pipeline {
         TF_HOME = tool('terraform')
         TF_INPUT = "0"
         TF_IN_AUTOMATION = "TRUE"
-        TF_LOG = "WARN"
+        TF_LOG = ""
         AWS_ACCESS_KEY_ID = credentials('aws_access_key')
         AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
         PATH = "$TF_HOME:$PATH"
     }
 
     stages {
-        stage('WiproTestInit'){
+        stage('Wipro-TF-Init') {
             steps {
-                {
-                    sh 'terraform --version'
-                    sh "terraform init"
-                }
+                sh '''
+                    terraform -version
+                    terraform init
+                '''
             }
         }
-        stage('WiproTestValidate'){
+        stage('Wipro-TF-Validate') {
             steps {
-                {
-                    sh 'terraform validate'
-                }
+                sh '''
+                    terraform validate
+                '''
             }
         }
-        stage('WiproTestPlan'){
+        stage('Wipro-TF-Plan') {
             steps {
-                {
                     sh "terraform plan -out wipro-dev-test.tfplan;echo \$? > status"
                     stash name: "wipro-dev-test", includes: "wipro-dev-test.tfplan"
-                }
             }
         }
-        stage('WiproTestApply'){
+        stage('ApplicationApply'){
             steps {
                 script{
                     def apply = false
@@ -55,12 +53,11 @@ pipeline {
                     if(apply){
                         {
                             unstash "wipro-dev-test"
-                            sh 'wipro-dev-test.tfplan'
+                            sh 'terraform apply wipro-dev-test.tfplan'
                         }
                     }
                 }
             }
         }
-
     }
 }
