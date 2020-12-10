@@ -17,4 +17,6 @@ module "vpc" {
   vpc_name              = var.vpc_name
   project               = var.project
   internet_gateway_name = var.internet_gateway_name
+  net_config            = var.net_config
+  rt_instance_count     = var.rt_instance_count
 }
