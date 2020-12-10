@@ -6,6 +6,10 @@ vpc_name              = "wipro-vpc"
 project               = "devops-test"
 internet_gateway_name = "wipro-igw"
 rt_instance_count     = 1
+alb_tg_name           = "wipro-tg"
+target_group_port     = 80
+target_group_protocol = "HTTP"
+
 
 net_config = {
   azs = [

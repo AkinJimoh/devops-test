@@ -20,3 +20,15 @@ module "vpc" {
   net_config            = var.net_config
   rt_instance_count     = var.rt_instance_count
 }
+
+####################################
+# Application-Load-Balancer Resource
+####################################
+
+module "alb" {
+  source      = "./modules/application-load-balancer"
+  region      = var.region.euw2
+  alb_tg_name = var.alb_tg_name
+  target_group_port = var.target_group_port
+  target_group_protocol = var.target_group_protocol
+}
