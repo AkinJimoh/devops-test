@@ -1,0 +1,7 @@
+Jenkins is running on AWS 
+Please visit the server at http://18.130.189.233:8080/
+
+UserName: wipro
+Password: wipro123
+
+In order to destroy the infrastructure that's been built, simply re-run the pipeline and click on cancel and it will delete everything.
