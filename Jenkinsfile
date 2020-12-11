@@ -5,6 +5,8 @@ pipeline {
     }
 
     environment {
+        registry = "ak11in/wipro"
+        registryCredential = 'docker-creds'
         TF_HOME = tool('terraform')
         TF_INPUT = "0"
         TF_IN_AUTOMATION = "TRUE"
