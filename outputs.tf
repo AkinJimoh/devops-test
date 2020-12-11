@@ -15,3 +15,7 @@ output "target_group_arn" {
 output "alb_sg" {
   value = module.alb.alb_sg
 }
+
+output "alb_dns" {
+  value = module.alb.alb_dns
+}

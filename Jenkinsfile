@@ -45,16 +45,16 @@ pipeline {
                         apply = true
                     } catch (err) {
                         apply = false
-                        {
+
                             sh "terraform destroy -auto-approve"
-                        }
+                            
                         currentBuild.result = 'UNSTABLE'
                     }
                     if(apply){
-                        {
+
                             unstash "wipro-dev-test"
                             sh 'terraform apply wipro-dev-test.tfplan'
-                        }
+                            
                     }
                 }
             }
