@@ -4,4 +4,12 @@ Please visit the server at http://18.133.77.29:8080/
 UserName: wipro
 Password: 56MG4maAd8VFagU
 
-In order to destroy the infrastructure that's been built, simply re-run the pipeline and click on cancel and it will delete everything.
+Please run the pipeline "wipro-deploy" to validate compliance with requirements. 
+The loadbalancer DNS name will be outputted at the end of the console output. 
+This can be used to verify the running application.
+
+In order to destroy the infrastructure that's been built, 
+simply re-run the pipeline and click on "Abort" and it will delete everything.
+
+In order to run this in your own account, the only change required would to update the AWS secret and access keys 
+under Credentials with yours.
