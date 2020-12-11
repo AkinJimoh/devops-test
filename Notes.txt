@@ -1,8 +1,8 @@
 Jenkins is running on AWS 
-Please visit the server at http://18.133.77.29:8080/
+Please visit the server at http://3.9.172.201:8080/
 
 UserName: wipro
-Password: 56MG4maAd8VFagU
+Password: 2wiz5rNA7fqDjsK
 
 Please run the pipeline "wipro-deploy" to validate compliance with requirements. 
 The loadbalancer DNS name will be outputted at the end of the console output. 

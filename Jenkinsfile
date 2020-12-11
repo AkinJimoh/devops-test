@@ -7,6 +7,7 @@ pipeline {
     environment {
         registry = "ak11in/wipro"
         registryCredential = 'docker-creds'
+        dockerImage = ''
         TF_HOME = tool('terraform')
         TF_INPUT = "0"
         TF_IN_AUTOMATION = "TRUE"
@@ -17,6 +18,29 @@ pipeline {
     }
 
     stages {
+        stage('Docker Build') {
+            steps {
+                dir('assets/'){
+                script {
+                  dockerImage = docker.build registry + ":lts"
+            }
+                }
+            }
+        }
+        stage('Deploy Image Build') {
+            steps{
+                script {
+                docker.withRegistry( '', registryCredential ) {
+                  dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Remove Unsed Image') {
+            steps{
+            sh "docker rmi $registry:lts"
+            }
+        }
         stage('Wipro-TF-Init') {
             steps {
                 sh '''
