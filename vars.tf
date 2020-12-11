@@ -33,3 +33,9 @@ variable "check_type" {}
 variable "force_delete" {}
 variable "tag_key" {}
 variable "tag_value" {}
+variable "destroy" {}
+variable "versioning" {}
+variable "aws_bucket_prefix" {}
+variable "profile_name" {}
+variable "role_name" {}
+variable "role_policy" {}

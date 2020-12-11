@@ -14,3 +14,4 @@ variable "tag_key" {}
 variable "tag_value" {}
 variable "target-group-arns" {}
 variable "lb_sec_group" {}
+variable "instance_profile" {}

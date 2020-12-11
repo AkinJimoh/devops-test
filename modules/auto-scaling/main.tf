@@ -25,6 +25,7 @@ resource "aws_launch_configuration" "launch_config" {
   security_groups = [aws_security_group.tg_sg.id]
   key_name        = var.key
   user_data       = file("bootstrap.sh")
+  iam_instance_profile = var.instance_profile
 
   lifecycle {
     create_before_destroy = true

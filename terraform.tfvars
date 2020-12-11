@@ -22,6 +22,12 @@ check_type             = "ELB"
 force_delete           = true
 tag_key                = "Name"
 tag_value              = "wipro"
+versioning             = "true"
+destroy                = true
+aws_bucket_prefix      = "wipro-test"
+profile_name           = "wipro-ip"
+role_name              = "wipro-iam"
+role_policy            = "wipro-pol"
 
 
 net_config = {

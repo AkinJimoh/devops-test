@@ -58,4 +58,17 @@ module "auto-scaling" {
   tag_value              = var.tag_value
   target-group-arns      = module.alb.target_group_arn
   lb_sec_group           = module.alb.alb_sg
+  instance_profile = module.s3.instance_profile
+}
+####################################
+# S3 Bucket
+####################################
+module "s3" {
+  source            = "./modules/s3"
+  versioning        = var.versioning
+  destroy           = var.destroy
+  aws_bucket_prefix = var.aws_bucket_prefix
+  profile_name      = var.profile_name
+  role_name         = var.role_name
+  role_policy       = var.role_policy
 }
