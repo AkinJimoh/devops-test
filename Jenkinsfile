@@ -5,8 +5,8 @@ pipeline {
     }
 
     environment {
-        registry = "ak11in/wipro"
-        registryCredential = 'docker-creds'
+        registry = "458909167390.dkr.ecr.eu-west-2.amazonaws.com/wipro-p1"
+        registryCredential = 'ecr-creds'
         dockerImage = ''
         TF_HOME = tool('terraform')
         TF_INPUT = "0"
@@ -30,7 +30,7 @@ pipeline {
         stage('Docker Deploy') {
             steps{
                 script {
-                docker.withRegistry( '', registryCredential ) {
+                docker.withRegistry("https://" + registry, "ecr:eu-west-2:" + registryCredential) {
                   dockerImage.push()
                     }
                 }
