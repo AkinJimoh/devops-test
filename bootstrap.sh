@@ -1,12 +1,13 @@
 #!/bin/bash
 # Install docker
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install -y docker.io
-sudo usermod -aG docker ubuntu
+ apt-get update
+ apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg |  apt-key add -
+ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+ apt-get update
+ apt-get install awscli -y
+ apt-get install -y docker.io
+ usermod -aG docker ubuntu
 
-sudo docker pull ak11in/wipro:lts
-sudo docker run -d -p 3000:3000 --name wipro ak11in/wipro:lts
+aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 458909167390.dkr.ecr.eu-west-2.amazonaws.com
+docker run -d -p 3000:3000 --name wipro 458909167390.dkr.ecr.eu-west-2.amazonaws.com/wipro-p1:lts

@@ -51,22 +51,27 @@ resource "aws_iam_role_policy" "wiproec2" {
   role = aws_iam_role.wipro.id
 
   policy = <<-EOF
-  {
+{
     "Version": "2012-10-17",
     "Statement": [
-      {
-        "Action": [
-          "s3:GetObject",
-          "s3:ListBucket"
-        ],
-        "Effect": "Allow",
-        "Resource": [
-                "arn:aws:s3:::${local.bucket_name}",
-                "arn:aws:s3:::${local.bucket_name}/*"
-            ]
-      }
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:ListImages",
+                "ecr:BatchGetImage",
+                "ecr:GetDownloadUrlForLayer"
+            ],
+            "Resource": "arn:aws:ecr:eu-west-2:458909167390:repository/wipro-p1"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "ecr:GetAuthorizationToken",
+            "Resource": "*"
+        }
     ]
-  }
+}
   EOF
 }
 

@@ -1,5 +1,5 @@
-Jenkins is running on AWS 
-Please visit the server at http://3.9.172.201:8080/
+I've got Jenkins running on AWS 
+Please visit the server at https://findtheotherside.com
 
 UserName: wipro
 Password: 2wiz5rNA7fqDjsK
@@ -7,13 +7,19 @@ Password: 2wiz5rNA7fqDjsK
 Please run the pipeline "wipro-deploy" to validate compliance with requirements. 
 The loadbalancer DNS name will be outputted at the end of the console output. 
 
-This can be used to verify that the application is running and being served from the loadbalancer via a 
+Please give it a couple of minutes after deployment before checking.
+
+The DNS name will be used to verify that the application is running and being served from the loadbalancer via a 
 round-robin strategy.
 
 In order to destroy the infrastructure that's been built, 
 simply re-run the pipeline and on the last stage, click on "Abort" and it will delete everything.
 
-In order to run this in your own account, the only change required would to update the AWS secret and access keys 
-under Credentials with yours.
+I have included my terraform tfvars (without any sensitive information) in source control, just to make your deployment of this infrastructure
+easier.
+Statefile is stored remotely in Consul as the back-end.
 
-I have included my tfvars to make a test deployment of this easier.
+I do hope that this meets your requirements.
+
+Regards,
+Akin Jimoh.

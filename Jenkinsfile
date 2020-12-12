@@ -14,6 +14,7 @@ pipeline {
         TF_LOG = ""
         AWS_ACCESS_KEY_ID = credentials('aws_access_key')
         AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+        CONSUL_HTTP_TOKEN = credentials('consul-creds')
         PATH = "$TF_HOME:$PATH"
     }
 
@@ -30,7 +31,7 @@ pipeline {
         stage('Docker Deploy') {
             steps{
                 script {
-                docker.withRegistry("https://" + registry, "ecr:eu-west-2:" + registryCredential) {
+                docker.withRegistry("https://" + registry, "ecr:eu-west-2:" + registryCredential ) {
                   dockerImage.push()
                     }
                 }
