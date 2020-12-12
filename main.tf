@@ -36,6 +36,7 @@ module "alb" {
   internal              = var.internal
   project               = var.project
   alb_subnets           = module.vpc.public_subnet_ids
+  vpc_cidr = var.vpc_cidr
 }
 ####################################
 # AutoScaling Resource
@@ -58,7 +59,7 @@ module "auto-scaling" {
   tag_value              = var.tag_value
   target-group-arns      = module.alb.target_group_arn
   lb_sec_group           = module.alb.alb_sg
-  instance_profile = module.s3.instance_profile
+  instance_profile       = module.s3.instance_profile
 }
 ####################################
 # S3 Bucket

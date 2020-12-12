@@ -19,12 +19,12 @@ data "aws_ami" "ubuntu" {
 
 
 resource "aws_launch_configuration" "launch_config" {
-  name_prefix     = var.launch_config_name
-  image_id        = data.aws_ami.ubuntu.id
-  instance_type   = var.instance_type
-  security_groups = [aws_security_group.tg_sg.id]
-  key_name        = var.key
-  user_data       = file("bootstrap.sh")
+  name_prefix          = var.launch_config_name
+  image_id             = data.aws_ami.ubuntu.id
+  instance_type        = var.instance_type
+  security_groups      = [aws_security_group.tg_sg.id]
+  key_name             = var.key
+  user_data            = file("bootstrap.sh")
   iam_instance_profile = var.instance_profile
 
   lifecycle {
@@ -88,7 +88,7 @@ resource "aws_security_group" "tg_sg" {
 
 locals {
   ingress_rules1 = [{
-    port        = 80
-    description = "Allows incoming traffic on port 80"
+    port        = 3000
+    description = "Allows incoming traffic on port 3000"
   }]
 }

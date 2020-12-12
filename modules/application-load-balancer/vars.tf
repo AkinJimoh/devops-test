@@ -6,6 +6,7 @@ variable "vpc_id" {}
 variable "alb_name" {}
 variable "internal" {}
 variable "project" {}
+variable "vpc_cidr" {}
 
 variable "alb_subnets" {
   type = list
