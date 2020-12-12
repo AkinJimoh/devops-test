@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Image Build') {
+        stage('Docker Deploy') {
             steps{
                 script {
                 docker.withRegistry( '', registryCredential ) {
@@ -36,12 +36,12 @@ pipeline {
                 }
             }
         }
-        stage('Remove Unsed Image') {
+        stage('Remove Unused Image') {
             steps{
             sh "docker rmi $registry:lts"
             }
         }
-        stage('Wipro-TF-Init') {
+        stage('Terraform Init') {
             steps {
                 sh '''
                     terraform -version
@@ -49,20 +49,20 @@ pipeline {
                 '''
             }
         }
-        stage('Wipro-TF-Validate') {
+        stage('Terrfom Validate') {
             steps {
                 sh '''
                     terraform validate
                 '''
             }
         }
-        stage('Wipro-TF-Plan') {
+        stage('Terraform Plan') {
             steps {
                     sh "terraform plan -out wipro-dev-test.tfplan;echo \$? > status"
                     stash name: "wipro-dev-test", includes: "wipro-dev-test.tfplan"
             }
         }
-        stage('ApplicationApply'){
+        stage('Terraform Apply'){
             steps {
                 script{
                     def apply = false

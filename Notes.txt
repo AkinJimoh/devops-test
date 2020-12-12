@@ -6,10 +6,14 @@ Password: 2wiz5rNA7fqDjsK
 
 Please run the pipeline "wipro-deploy" to validate compliance with requirements. 
 The loadbalancer DNS name will be outputted at the end of the console output. 
-This can be used to verify the running application.
+
+This can be used to verify that the application is running and being served from the loadbalancer via a 
+round-robin strategy.
 
 In order to destroy the infrastructure that's been built, 
-simply re-run the pipeline and click on "Abort" and it will delete everything.
+simply re-run the pipeline and on the last stage, click on "Abort" and it will delete everything.
 
 In order to run this in your own account, the only change required would to update the AWS secret and access keys 
 under Credentials with yours.
+
+I have included my tfvars to make a test deployment of this easier.
