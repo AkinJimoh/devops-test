@@ -1,13 +1,13 @@
 pipeline {
     agent any
-        tools {
-        "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform"
-    }
+    
+    tools {nodejs "nodejs"}
 
     environment {
         registry = "458909167390.dkr.ecr.eu-west-2.amazonaws.com/wipro-p1"
         registryCredential = 'ecr-creds'
         dockerImage = ''
+        args = "--network host"
         TF_HOME = tool('terraform')
         TF_INPUT = "0"
         TF_IN_AUTOMATION = "TRUE"
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('assets/'){
                 script {
-                  dockerImage = docker.build registry + ":lts"
+                  dockerImage = docker.build(registry, '--network=host .')
             }
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Remove Unused Image') {
             steps{
-            sh "docker rmi $registry:lts"
+            sh "docker rmi $registry"
             }
         }
         stage('Terraform Init') {

@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 
+RUN cat /etc/resolv.conf
+
 RUN npm install
 
 # Bundle source

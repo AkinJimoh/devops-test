@@ -1,10 +1,12 @@
+Hello,
+
 I've got Jenkins running on AWS 
 Please visit the server at https://findtheotherside.com
 
 UserName: wipro
 Password: 2wiz5rNA7fqDjsK
 
-Please run the pipeline "wipro-deploy" to validate compliance with requirements. 
+You can run the pipeline "wipro-deploy" to validate compliance with requirements. 
 The loadbalancer DNS name will be outputted at the end of the console output. 
 
 Please give it a couple of minutes after deployment before checking.
@@ -19,7 +21,9 @@ I have included my terraform tfvars (without any sensitive information) in sourc
 easier.
 Statefile is stored remotely in Consul as the back-end.
 
-I do hope that this meets your requirements.
+Webhooks have also been set up to trigger pipeline deployment on commits.
+
+I do hope that this meets your requirements, and I look forward to hearing from you soon.
 
 Regards,
 Akin Jimoh.
