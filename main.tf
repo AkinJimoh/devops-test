@@ -5,11 +5,6 @@ provider "aws" {
   region = var.region.euw2
 }
 
-# provider "consul" {
-#   address    = "${var.consul_address}:${var.consul_port}"
-#   datacenter = var.consul_datacenter
-# }
-
 #################################
 # VPC Resource
 #################################
