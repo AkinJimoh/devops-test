@@ -19,6 +19,15 @@ pipeline {
     }
 
     stages {
+        stage('Clean Up') {
+            steps {
+                // Clean before build
+                cleanWs()
+                // We need to explicitly checkout from SCM here
+                checkout scm
+                echo "Now building ${env.JOB_NAME}..."
+            }
+        }
         stage('Docker Build') {
             steps {
                 dir('assets/'){
